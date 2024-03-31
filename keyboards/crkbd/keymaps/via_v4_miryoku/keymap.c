@@ -27,9 +27,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [L_NAV] = LAYOUT_split_3x6_3_ex2(
-    // bright+   (web)   back       search    forward              toggle symbol/number layer       home                page_up
+    // bright+   (web)   back       search    forward              TG(sym)    TG(num)               home                page_up
     KC_BRIU,  _______,   KC_WBAK,   KC_WSCH,  KC_WFWD,   _______,  TG(L_SYM), TG(L_NUM),  _______,  KC_HOME,  _______,  KC_PGUP,  _______,  _______,
-    // bright- (audio)   prev       vol+      next                                                  end       up        page_down
+    // bright- (audio)   prev       vol+      next                 insert     caps                  end       up        page_down
     KC_BRID,  _______,   KC_MPRV,   KC_VOLU,  KC_MNXT,   _______,  KC_INS,    KC_CAPS,    _______,  KC_END,   KC_UP,    KC_PGDN,  _______,  _______,
     // gui     (audio)   vol0       vol-      play/pause                                            left      down      right
     KC_LGUI,  _______,   KC_MUTE,   KC_VOLD,  KC_MPLY,   _______,                         _______,  KC_LEFT,  KC_DOWN,  KC_RGHT,  _______,  _______,
@@ -44,15 +44,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [L_SYM] = LAYOUT_split_3x6_3_ex2(
-  /*  symbols
-      @ & | ^ {     } $ %
-      : ! = > [     ] # ~
-      * + - / (     ) \ ;
-          _ `
-  */
+    //        @          &          |         ^          {                                }         $         %
     _______,  KC_AT,     KC_AMPR,   KC_PIPE,  KC_CIRC,   KC_LCBR,   TG(L_SYM),  _______,  KC_RCBR,  KC_DLR,   KC_PERC,  _______,  _______,  _______,
+    //        :          !          =         >          [                                ]         #         ~
     _______,  KC_COLN,   KC_EXLM,   KC_EQL,   KC_GT,     KC_LBRC,   _______,    _______,  KC_RBRC,  KC_HASH,  KC_TILD,  _______,  _______,  _______,
+    //        *          +          -         /          (                                )         \         ;
     _______,  KC_ASTR,   KC_PLUS,   KC_MINS,  KC_SLSH,   KC_LPRN,                         KC_RPRN,  KC_BSLS,  KC_SCLN,  _______,  _______,  _______,
+    //                                        _          `
                                               KC_UNDS,   KC_GRV,    _______,    _______,  _______,  _______
   ),
 
@@ -66,23 +64,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /*
   [L_QWT] = LAYOUT_split_3x6_3_ex2(
-    LALT_T(KC_TAB),    KC_Q,     KC_W,         KC_E,   KC_R,  KC_T,  KC_BSPC,  KC_DEL,   KC_Y,  KC_U,  KC_I,    KC_O,           KC_P,    KC_LALT,
-    LCTL_T(KC_ENT),    KC_A,     KC_S,         KC_D,   KC_F,  KC_G,  KC_LSFT,  KC_LSFT,  KC_H,  KC_J,  KC_K,    KC_L,           KC_QUOT, KC_LCTL,
-    LSFT_T(TG(L_NUM)), KC_Z,     ALGR_T(KC_X), KC_C,   KC_V,  KC_B,                      KC_N,  KC_M,  KC_COMM, ALGR_T(KC_DOT), KC_SLSH, LSFT_T(TG(L_SYM)),
-                      LT(L_NAV,KC_ESC), LT(L_NUM,KC_TAB), LGUI_T(KC_SPC), LCTL_T(KC_ENT), LT(L_SYM,KC_BSPC), LT(L_FUN,KC_DEL)
+    KC_Q,     KC_W,         KC_E,   KC_R,  KC_T,         KC_Y,  KC_U,  KC_I,    KC_O,           KC_P,   
+    KC_A,     KC_S,         KC_D,   KC_F,  KC_G,         KC_H,  KC_J,  KC_K,    KC_L,           KC_QUOT,
+    KC_Z,     ALGR_T(KC_X), KC_C,   KC_V,  KC_B,         KC_N,  KC_M,  KC_COMM, ALGR_T(KC_DOT), KC_SLSH,
   ),
 
   [L_DVK] = LAYOUT_split_3x6_3_ex2(
-    LALT_T(KC_TAB),    KC_QUOT,  KC_COMM,      KC_DOT, KC_P,  KC_Y,  KC_BSPC,  KC_DEL,   KC_F,  KC_G,  KC_C,    KC_R,           KC_L,    KC_LALT,
-    LCTL_T(KC_ENT),    KC_A,     KC_O,         KC_E,   KC_U,  KC_I,  KC_LSFT,  KC_LSFT,  KC_D,  KC_H,  KC_T,    KC_N,           KC_S,    KC_LCTL,
-    LSFT_T(TG(L_NUM)), KC_SLSH,  ALGR_T(KC_Q), KC_J,   KC_K,  KC_X,                      KC_B,  KC_M,  KC_W,    ALGR_T(KC_V),   KC_Z,    LSFT_T(TG(L_SYM)),
-                      LT(L_NAV,KC_ESC), LT(L_NUM,KC_TAB), LGUI_T(KC_SPC), LCTL_T(KC_ENT), LT(L_SYM,KC_BSPC), LT(L_FUN,KC_DEL)
+    KC_QUOT,  KC_COMM,      KC_DOT, KC_P,  KC_Y,         KC_F,  KC_G,  KC_C,    KC_R,           KC_L, 
+    KC_A,     KC_O,         KC_E,   KC_U,  KC_I,         KC_D,  KC_H,  KC_T,    KC_N,           KC_S, 
+    KC_SLSH,  ALGR_T(KC_Q), KC_J,   KC_K,  KC_X,         KC_B,  KC_M,  KC_W,    ALGR_T(KC_V),   KC_Z,  
   ),
 
   [L_WKM] = LAYOUT_split_3x6_3_ex2(
-    LALT_T(KC_TAB),    KC_Q,     KC_D,         KC_R,  KC_W,   KC_B,  KC_BSPC,  KC_DEL,   KC_J,  KC_F,  KC_U,    KC_P,           KC_QUOT,  KC_LALT,
-    LCTL_T(KC_ENT),    KC_A,     KC_S,         KC_H,  KC_T,   KC_G,  KC_LSFT,  KC_LSFT,  KC_Y,  KC_N,  KC_E,    KC_O,           KC_I,     KC_LCTL,
-    LSFT_T(TG(L_NUM)), KC_Z,     ALGR_T(KC_X), KC_M,  KC_V,   KC_C,                      KC_K,  KC_L,  KC_COMM, ALGR_T(KC_DOT), KC_SLSH,  LSFT_T(TG(L_SYM)),
-                      LT(L_NAV,KC_ESC), LT(L_NUM,KC_TAB), LGUI_T(KC_SPC), LCTL_T(KC_ENT), LT(L_SYM,KC_BSPC), LT(L_FUN,KC_DEL)
+    KC_Q,     KC_D,         KC_R,  KC_W,   KC_B,         KC_J,  KC_F,  KC_U,    KC_P,           KC_QUOT, 
+    KC_A,     KC_S,         KC_H,  KC_T,   KC_G,         KC_Y,  KC_N,  KC_E,    KC_O,           KC_I,  
+    KC_Z,     ALGR_T(KC_X), KC_M,  KC_V,   KC_C,         KC_K,  KC_L,  KC_COMM, ALGR_T(KC_DOT), KC_SLSH,  
   ),
 */
